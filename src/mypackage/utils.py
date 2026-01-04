@@ -13,3 +13,16 @@ def export_as_csv_and_pkl(df: pd.DataFrame, file_name: str, path: Path = Path.cw
     df.to_csv(f"{file_path}.csv", index=False)
     df.to_pickle(f"{file_path}.pkl")
     print(f"Data saved to {file_path}.csv and {file_path}.pkl")
+
+def export_model(model, file_name: str, path: Path = Path.cwd()):
+    import joblib
+    file_path = path / file_name
+    joblib.dump(model, f"{file_path}.joblib")
+    print(f"Model saved to {file_path}.joblib")
+
+def load_model(file_name: str, path: Path = Path.cwd()):
+    import joblib
+    file_path = path / file_name
+    model = joblib.load(f"{file_path}.joblib")
+    print(f"Model loaded from {file_path}.joblib")
+    return model
