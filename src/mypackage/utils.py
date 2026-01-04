@@ -1,3 +1,4 @@
+from pathlib import Path
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -7,6 +8,8 @@ def print_validation(val_y, pred_y):
     print("R2:", r2_score(val_y, pred_y))
 
 
-def export_as_csv_and_pkl(df: pd.DataFrame, file_path_without_extension: str): 
-    df.to_csv(f"{file_path_without_extension}.csv", index=False)
-    df.to_pickle(f"{file_path_without_extension}.pkl")
+def export_as_csv_and_pkl(df: pd.DataFrame, file_name: str, path: Path = Path.cwd()): 
+    file_path = path / file_name
+    df.to_csv(f"{file_path}.csv", index=False)
+    df.to_pickle(f"{file_path}.pkl")
+    print(f"Data saved to {file_path}.csv and {file_path}.pkl")
