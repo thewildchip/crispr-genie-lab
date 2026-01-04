@@ -15,7 +15,7 @@ using genomic, epigenetic, and sequence-based features.
 * Build **reproducible ML pipelines** (data → features → models → evaluation)
 * Compare **classical ML** and **neural network** approaches
 * Understand **which biological features matter most** for CRISPR performance
-* Keep the code **clean, modular ** and get the **best possible outcome** as a two-man team
+* Keep the code **clean, modular** and get the **best possible outcome** as a two-man team
 
 ---
 
