@@ -2,6 +2,8 @@ from pathlib import Path
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+BASES = ['A', 'C', 'G', 'T']
+
 def print_validation(val_y, pred_y):
     print("MAE: ", mean_absolute_error(val_y, pred_y))
     print("MSE: ", mean_squared_error(val_y, pred_y))
