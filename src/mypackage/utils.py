@@ -1,6 +1,7 @@
 from pathlib import Path
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
 
 BASES = ['A', 'C', 'G', 'T']
 
@@ -28,3 +29,13 @@ def load_model(file_name: str, path: Path = Path.cwd()):
     model = joblib.load(f"{file_path}.joblib")
     print(f"Model loaded from {file_path}.joblib")
     return model
+
+def drop_seq(df: pd.DataFrame) -> None:
+    df.drop(columns=["23-nt_sequence"], inplace=True)
+
+
+def pipeline(df: pd.DataFrame, target: str = "normalized_efficacy"):
+    X = df.drop(columns=[target])
+    y = df[target]
+    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=0)
+    return X, X_train, X_val, y, y_train, y_val
